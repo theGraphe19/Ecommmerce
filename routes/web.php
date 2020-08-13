@@ -14,3 +14,6 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('/reg', 'AdminController@reg');
+$router->post('/login', 'AdminController@login');

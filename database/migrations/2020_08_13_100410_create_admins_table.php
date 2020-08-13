@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('password');
+            $table->string('api_token');
             $table->timestamps();
         });
     }
