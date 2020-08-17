@@ -20,6 +20,14 @@ class AdminController extends Controller
     }
 
     public function reg(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required|regex:/^[A-Za-z ]+$/',
+            'phone' => 'required|min:8|max:10|unique:admins|regex:/^[0-9]+$/',
+            'email' => 'required|email|unique:admins',
+            'password' => 'required|regex:/^[^\W_]+$/|min:8|max:13',
+        ]);
+
         $name = $request->input('name');
         $phone = $request->input('phone');
         $email = $request->input('email');
@@ -31,6 +39,7 @@ class AdminController extends Controller
             'phone' => $request->input('phone'),
             'email' => $request->input('email'),
             'password' => $password,
+            'status' => 1,
             'api_token' => Str::random(60),
         ]);
 
