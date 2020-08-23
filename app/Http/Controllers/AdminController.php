@@ -64,8 +64,19 @@ class AdminController extends Controller
         return response()->json(['status' => 'error', 'message' => 'Incorrect password'], 401);
     }
 
-    public function storeAbout(){
+    public function storeAbout(Request $request){
         $admins = Admin::all();
-        return response()->json($admins);
+
+        foreach($admins as $admin){
+            $admin->about_us = $request->input('about_us');
+            $admin->about_us_img = $request->input('about_us_img');
+            $admin->save();
+        }
+        return response()->json(['status' => 'success', 'message' => 'Saved succesfully'], 200);
+    }
+    
+    public function aboutus(){
+        $admin = Admin::first();
+        return response()->json($admin);
     }
 }

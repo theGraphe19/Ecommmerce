@@ -17,4 +17,5 @@ $router->get('/', function () use ($router) {
 
 $router->post('/reg', 'AdminController@reg');
 $router->post('/login', 'AdminController@login');
-$router->get('/aboutsave', 'AdminController@storeAbout');
+$router->post('/aboutsave', 'AdminController@storeAbout');
+$router->get('/aboutus', 'AdminController@aboutus');
