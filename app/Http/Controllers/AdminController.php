@@ -64,5 +64,8 @@ class AdminController extends Controller
         return response()->json(['status' => 'error', 'message' => 'Incorrect password'], 401);
     }
 
-    //
+    public function storeAbout(){
+        $admins = Admin::all();
+        return response()->json($admins);
+    }
 }
